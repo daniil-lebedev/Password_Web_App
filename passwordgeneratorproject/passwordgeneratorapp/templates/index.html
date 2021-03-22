@@ -1,14 +1,14 @@
 {% extends 'base.html' %} 
-{% block content %} 
+{% block content %}
+	<div class="container">
 	{% for thing in all_passwords %}
-		<div class="card" style="width: 18rem;">
-			<div class="card-body">
-				<h5 class="card-title">{{thing.name}}</h5>
-				<h6 class="card-subtitle mb-2 text-muted">{{thing.link}}</h6>
-				<h7 class="card-subtitle mb-2 text-muted">{{thing.password}}</h7>
-			</div>
+		<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+		  <div class="card-header">{{thing.name}}</div>
+			  <div class="card-body">
+			    <h5 class="card-title">{{thing.password}}</h5>
+			  </div>
 		</div>
-		<br>
-	{% endfor %}
+	{% endfor %}	
+	</div> 
 
 {% endblock %}
