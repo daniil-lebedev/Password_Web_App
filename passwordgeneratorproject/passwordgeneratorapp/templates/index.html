@@ -1,1 +1,14 @@
-Hello world
+{% extends 'base.html' %} 
+{% block content %} 
+	{% for thing in all_passwords %}
+		<div class="card" style="width: 18rem;">
+			<div class="card-body">
+				<h5 class="card-title">{{thing.name}}</h5>
+				<h6 class="card-subtitle mb-2 text-muted">{{thing.link}}</h6>
+				<h7 class="card-subtitle mb-2 text-muted">{{thing.password}}</h7>
+			</div>
+		</div>
+		<br>
+	{% endfor %}
+
+{% endblock %}
