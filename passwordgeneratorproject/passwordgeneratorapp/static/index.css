@@ -1,13 +1,17 @@
 html{
-	background-image: linear-gradient(90deg, #020024 0%, #090979 35%, #00d4ff 100%);
+	background-color: #20bf55;
+	background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
 }
 
 body{
-	background-image: linear-gradient(90deg, #020024 0%, #090979 35%, #00d4ff 100%);
-
+	background-color: #20bf55;
+	background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
 }
 
 .container{
 	display: flex;
-	margin: 10px;
+	flex-wrap: wrap;
+	margin: 50px;
+	align-items: center;
+	flex-direction: center;
 }

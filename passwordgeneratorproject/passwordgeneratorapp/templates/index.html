@@ -1,13 +1,17 @@
 {% extends 'base.html' %} 
 {% block content %}
+	<div class="jumbotron">
+	  <h1 class="display-4">Hello there!</h1>
+	  <p class="lead">All the passwords will be displayed on this page!</p>
+	</div>
 	<div class="container" id="id">
 	{% for thing in all_passwords %}
 		<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
 		  <div class="card-header">{{thing.name}}</div>
 			  <div class="card-body">
 			    <h5 class="card-title">{{thing.password}}</h5>
+			    <a class="btn btn-danger" href="{% url 'delete' thing.id %}" role="button">Delete</a>
 			  </div>
-			  <a href="{% url 'delete' thing.id %}">Delete</a>
 		</div>
 	{% endfor %}	
 	</div> 

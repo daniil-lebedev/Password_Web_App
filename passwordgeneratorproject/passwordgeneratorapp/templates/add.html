@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	<form action="" method="POST">
-	    {% csrf_token %}
-	    <!--This tag is a Django security feature-->
-	    {{form}}
-	    <button type="submit" class="btn btn-success">Add</button>
-	</form>
+	<div class="container">
+		<form action="" method="POST">
+		    {% csrf_token %}
+		    <!--This tag is a Django security feature-->
+		    {{form}}
+		    <button type="submit" class="btn btn-success">Add</button>
+		</form>
+	</div>
 {% endblock %}
