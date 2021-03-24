@@ -37,7 +37,12 @@ class GeneratePasswordView(TemplateView):
 		form = PasswordGeneratorForm(request.POST)
 		if form.is_valid():
 			#getting the result of that post request and making sure that nothing dangerous is sumbitted
-			text = form.cleaned_data['post']
+			amount_of_low_let = form.cleaned_data['lower_case_letters_amount']
+			amount_of_up_let = form.cleaned_data['upper_case_letters_amount']
+			amount_of_numbers = form.cleaned_data['numbers_amount']
 			#I want to load the form but also pass text
-		args = {'form':form, 'text':text}
+			a = amount_of_up_let+amount_of_low_let+amount_of_numbers
+			b = str(a)
+
+		args = {'form':form, 'b':b }
 		return render(request, self.template_name, args)

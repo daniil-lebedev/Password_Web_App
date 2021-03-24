@@ -1,6 +1,7 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, IntegerField
 from .models import *
 from django import forms
+
 
 """Form for creating new passwords"""
 class PasswordForm(ModelForm):
@@ -9,4 +10,6 @@ class PasswordForm(ModelForm):
 		fields = '__all__'
 
 class PasswordGeneratorForm(forms.Form):
-	post = forms.CharField()
+	lower_case_letters_amount = IntegerField()
+	upper_case_letters_amount = IntegerField()
+	numbers_amount = IntegerField()
