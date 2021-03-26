@@ -40,9 +40,39 @@ class GeneratePasswordView(TemplateView):
 			amount_of_low_let = form.cleaned_data['lower_case_letters_amount']
 			amount_of_up_let = form.cleaned_data['upper_case_letters_amount']
 			amount_of_numbers = form.cleaned_data['numbers_amount']
-			#I want to load the form but also pass text
-			a = amount_of_up_let+amount_of_low_let+amount_of_numbers
-			b = str(a)
+			
+			#generate characters for passowrds
+			letters_low = string.ascii_lowercase
+			letters_up = string.ascii_uppercase
+			var_list = []
+			password_list = []
+			password_list.append(random.choice(letters_up))
 
-		args = {'form':form, 'b':b }
+			#generate values for numbers
+			for i in range(0,amount_of_numbers):
+				if amount_of_numbers == 0:
+					pass
+				var_list.append(random.randrange(10))
+
+			#generate value for lowercase letters
+			for y in range(0, amount_of_low_let):
+				if amount_of_low_let == 0:
+					pass
+				var_list.append(random.choice(letters_low))
+
+			#generate value for uppercase letters
+			for x in range(0, amount_of_up_let):
+				if amount_of_up_let == 0:
+					pass
+				var_list.append(random.choice(letters_up))
+
+			#putting all the stuff together
+			password_list.extend(var_list)
+			random.shuffle(password_list)
+			password_list = [str(int) for int in password_list]
+			password_list = "".join(password_list)
+			password_list = str(password_list)
+			
+
+		args = {'form':form, 'password_list':password_list }
 		return render(request, self.template_name, args)
