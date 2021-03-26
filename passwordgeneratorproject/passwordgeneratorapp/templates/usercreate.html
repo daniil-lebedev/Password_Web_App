@@ -1,0 +1,7 @@
+<h3>Register please</h3>
+
+<form  method="POST">
+	{% csrf_token %}
+	{{form.as_p}}
+	<button type="submit">Create</button>
+</form>

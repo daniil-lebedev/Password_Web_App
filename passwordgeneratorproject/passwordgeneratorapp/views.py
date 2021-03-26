@@ -6,6 +6,9 @@ import random
 import string
 from django.views.generic import TemplateView
 
+###package to create user
+from django.contrib.auth.forms import UserCreationForm
+
 # Create your views here.
 def index(request):
     all_passwords = Password.objects.all()
@@ -88,3 +91,13 @@ class CheckPassword(TemplateView):
 	def post(self, request):
 		args = {'form':form}
 		return render(request, self.template_name,args)
+
+"""function to create user"""
+def createuser(request):
+	form = UserCreationForm(request.POST)
+	if request.method == "POST":
+		if form.is_valid():
+			form.save()
+			return redirect('index')
+	context = {'form':form}
+	return render(request, 'usercreate.html', context)
