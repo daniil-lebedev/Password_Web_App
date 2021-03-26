@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from .models import Password
-from .forms import PasswordForm, PasswordGeneratorForm
+from .forms import PasswordForm, PasswordGeneratorForm, PasswordChecker
 import random
 import string
 from django.views.generic import TemplateView
@@ -76,3 +76,15 @@ class GeneratePasswordView(TemplateView):
 
 		args = {'form':form, 'password_list':password_list }
 		return render(request, self.template_name, args)
+
+"""Class to check the password"""
+class CheckPassword(TemplateView):
+	template_name = 'passwordcheck.html'
+
+	def get(self,request):
+		form = PasswordChecker(request.POST)
+		return render(request, self.template_name, {'form':form})
+
+	def post(self, request):
+		args = {'form':form}
+		return render(request, self.template_name,args)
