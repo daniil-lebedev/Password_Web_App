@@ -84,12 +84,27 @@ class GeneratePasswordView(TemplateView):
 class CheckPassword(TemplateView):
 	template_name = 'passwordcheck.html'
 
+	#if a get request is sent returnt the webpage with forms
 	def get(self,request):
 		form = PasswordChecker(request.POST)
 		return render(request, self.template_name, {'form':form})
 
+	#if a post request has been sent - returnt the webpage with forms and additional content
 	def post(self, request):
+		form = PasswordChecker(request.POST)
+		#dictionary for the form
 		args = {'form':form}
+
+		#variable for warrning that the password is too short
+		too_short = ('The passowrd is too short!')
+
+		#clean the data and assign it to a new argument
+		if form.is_valid():
+			password_check_arg = form.cleaned_data['checkingpassword']
+			#check the length of the password 
+			#if it is too short return the warning that it is too short
+			if len(password_check_arg)<5:
+				return render(request, self.template_name,{'too_short':too_short})
 		return render(request, self.template_name,args)
 
 """function to create user"""

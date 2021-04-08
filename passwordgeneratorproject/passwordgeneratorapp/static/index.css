@@ -1,17 +1,14 @@
 html{
-	background-color: #20bf55;
-	background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+	background-color: #7FDBFF;
 }
 
 body{
-	background-color: #20bf55;
-	background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+	background-color: #7FDBFF;
 }
 
 .container{
 	display: flex;
 	flex-wrap: wrap;
-	margin: 50px;
-	align-items: center;
+	padding: 50px;
 	flex-direction: center;
 }
