@@ -12,3 +12,8 @@ class Password(models.Model):
     def __str__(self):
         return self.name
 
+class CreditCard(models.Model):
+	name = models.CharField(max_length=50)
+	cardNumber = models.IntegerField()
+	date = models.CharField(max_length=5)
+	securityCode = models.IntegerField()

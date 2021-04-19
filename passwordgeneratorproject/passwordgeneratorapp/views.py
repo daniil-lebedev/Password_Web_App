@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
-from .models import Password
-from .forms import PasswordForm, PasswordGeneratorForm, PasswordChecker
+from .models import Password, CreditCard
+from .forms import PasswordForm, PasswordGeneratorForm, PasswordChecker, CreditCardForm
 import random
 import string
 from django.views.generic import TemplateView
@@ -116,3 +116,18 @@ def createuser(request):
 			return redirect('index')
 	context = {'form':form}
 	return render(request, 'usercreate.html', context)
+
+"""function to create a new credit card"""
+def creditCard(request):
+	form = CreditCardForm(request.POST)
+	if request.method == "POST":
+		if form.is_valid():
+			form.save()
+			return redirect('index')
+	context = {'form':form}
+	return render(request, 'creditcardformcreate.html', context)
+
+"""function to dsiplay the credit card created by the user"""
+def creaditCardView(request):
+	all_cards = CreditCard.objects.all()
+	return render(request, 'displaycreditcard.html', {"all_cards":all_cards})
