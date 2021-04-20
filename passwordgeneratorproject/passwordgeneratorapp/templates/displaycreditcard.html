@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	{% for card in all_cards %}
-	<div class="card" style="width: 18rem; margin:50px; display: flex; flex-wrap: wrap">
-	  <div class="card-body">
-	    <h5 class="card-title">{{card.name}}</h5>
-	    <h6 class="card-subtitle mb-2 text-muted">{{card.date}}</h6>
-	    <p class="card-text">{{card.cardNumber}}</p>
-	    <p class="card-text">{{card.securityCode}}</p>
-	  </div>
+	<div class="container">
+		{% for card in all_cards %}
+		<div class="card" style="width: 18rem; margin:20px; border-radius: 15px">
+		  <div class="card-body">
+		    <h5 class="card-title">{{card.name}}</h5>
+		    <h6 class="card-subtitle mb-2 text-muted">{{card.cardNumber}}</h6>
+		    <p class="card-text">{{card.date}}</p>
+		    <p class="card-text"> Security code: {{card.securityCode}}</p>
+		  </div>
+		</div>
+		{% endfor %}
 	</div>
-	{% endfor %}
 {% endblock %}
