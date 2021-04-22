@@ -95,16 +95,26 @@ class CheckPassword(TemplateView):
 		#dictionary for the form
 		args = {'form':form}
 
-		#variable for warrning that the password is too short
+		#variable for warning that the password is too short
 		too_short = ('The passowrd is too short!')
+
+		#variable for message that the password is long enough
+		long_enough = ('The password is medium length!')
+
+		#variable for password being very long
+		very_long = ('The password is very long. You should be proud!')
 
 		#clean the data and assign it to a new argument
 		if form.is_valid():
 			password_check_arg = form.cleaned_data['checkingpassword']
 			#check the length of the password 
 			#if it is too short return the warning that it is too short
-			if len(password_check_arg)<5:
+			if len(password_check_arg)<10:
 				return render(request, self.template_name,{'too_short':too_short})
+			if len(password_check_arg)<15:
+				return render(request, self.template_name, {'long_enough':long_enough})
+			else:
+				return render(request, self.template_name, {'very_long':very_long})
 		return render(request, self.template_name,args)
 
 """function to create user"""
